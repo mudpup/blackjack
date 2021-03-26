@@ -10,6 +10,7 @@ This is an experiment to learn how to work with math in python while studying pr
 - [ ] Calculate how likely you are to succeed on a double down.
 - [ ] Complete the basic idea, make it functional. 
 - [ ] Find a simpler way to execute the code. Make it less clunky.
+- [ ] Give the player an option to add multiple decks or players.
 - [ ] Add more options for the user. Potentially the ability to factor in different styles of playing blackjack, amount of decks used, or number of players.
 - [ ] Recreate the code in Haxe or C++. 
 - [ ] Create a GUI to allow the program to be easily accessible. 
