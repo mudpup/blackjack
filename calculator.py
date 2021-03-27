@@ -8,6 +8,7 @@ cardvalue = 0
 dealerstand = False
 dealercardvalue = 0
 
+
 def askLeave():
     leave = input(("Type 'exit' to exit, or 'c' to keep playing. "))
     if leave == 'exit' or 'c':
@@ -19,12 +20,13 @@ def askLeave():
         print("Invalid answer. Please write 'exit' or 'c'. ")
         askLeave()
 
+
 def calculate():
     pnumace = [num for num in playerHandList if num == 11]
     dnumace = [num for num in dealerHandList if num == 11]
 
     # Player Total Calculation
-    while len(pnumace) > 0 and sum(playerHandList) > 21: #Changes aces to 1 if bust
+    while len(pnumace) > 0 and sum(playerHandList) > 21:  # Changes aces to 1 if bust
         playerHandList.remove(11)
         playerHandList.append(1)
         pnumace.remove(11)
@@ -35,14 +37,18 @@ def calculate():
         print(playerHandList)
         print(sum(playerHandList))
         exit()
-    print("Your point total is: ",sum(playerHandList))
-    print("Your chance of busting on your next card is: ", 100*(float(len([num for num in cardValueList if num > (21-sum(playerHandList))]))/float(len(cardValueList))), "%")
-    print("The chance of succeeding on a double down is: ", 100*((float(len([num for num in cardValueList if num == (21-sum(playerHandList))])))/float(len(cardValueList))),"%")
+    print("Your point total is: ", sum(playerHandList))
+    print("Your chance of busting on your next card is: ", 100 * (
+                float(len([num for num in cardValueList if num > (21 - sum(playerHandList))])) / float(
+            len(cardValueList))), "%")
+    print("The chance of succeeding on a double down is: ", 100 * (
+                (float(len([num for num in cardValueList if num == (21 - sum(playerHandList))]))) / float(
+            len(cardValueList))), "%")
     if len([num for num in playerHandList if num == 11]) > 0:
         print("Because you have an ace worth 11 points, you will not lose if your next card puts you over 21.")
-    print("There is a ", 100*(float(len([num for num in cardValueList if num == (21-sum(dealerHandList))]))/float(len(cardValueList))),"% chance of the dealer's next card giving them 21.")
+    print("There is a ", 100 * (float(len([num for num in cardValueList if num == (21 - sum(dealerHandList))])) / float(
+        len(cardValueList))), "% chance of the dealer's next card giving them 21.")
     askLeave()
-
 
 
 def testDealer():  # Prints a certain text depending on the number of the dealer's turn.
@@ -63,11 +69,9 @@ def testPlayer():  # Prints a certain text depending on the number of your turn.
     if len(playerHandList) == 0:
         cardvalue = input("What is the numerical value of the first card you were dealt? ")
     elif len(playerHandList) == 1:
-        cardvalue = input("What is the numerical value of the second card you were dealt? (Say 'exit' to exit, "
-                          "and 'c' to calculate) ")
+        cardvalue = input("What is the numerical value of the second card you were dealt? (Say 'c' to calculate) ")
     else:
-        cardvalue = input("What is the numerical value of the card you were just dealt? (Say 'exit' to exit, "
-                          "and 'c' to calculate) ")
+        cardvalue = input("What is the numerical value of the card you were just dealt? (Say 'c' to calculate) ")
 
 
 def askPlayervalue():
@@ -119,4 +123,5 @@ def askDealervalue():  # Checks the value of the dealer's card.
         askPlayervalue()
 
 
+print("Please keep in mind, you must input the value of an ace as '1'. Type 'exit' to leave at any time.")
 askPlayervalue()
